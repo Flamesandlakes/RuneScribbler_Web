@@ -1,0 +1,300 @@
+[gd_scene load_steps=19 format=3 uid="uid://dorrjjfpfcj8u"]
+
+[ext_resource type="FontFile" uid="uid://blri2xhdqr6hi" path="res://Fonts/Pseudo futhark font.tres" id="1"]
+[ext_resource type="Script" path="res://Worlds/StartMenu.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://b64sv6iehmidf" path="res://Fonts/Grey as Elder Futhark/Tile/f.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://4ncngct2s7aq" path="res://Fonts/Grey as Elder Futhark/Tile/th, sort of.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://be7q3ghh0mddr" path="res://Fonts/Grey as Elder Futhark/Tile/c, k, q.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://ck3bgk6n6mwdo" path="res://Fonts/Grey as Elder Futhark/Tile/r.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://b6a1cisip1qvh" path="res://Fonts/Grey as Elder Futhark/Tile/a.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://begu8aebt46r1" path="res://Fonts/Grey as Elder Futhark/Tile/u.png" id="8"]
+[ext_resource type="FontFile" uid="uid://cprthg0w12pn3" path="res://Fonts/ComicRunes.otf" id="10_dgp4o"]
+
+[sub_resource type="Curve" id="Curve_qpmnd"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0.04, 257.143), 0.0, 0.0, 0, 0, Vector2(0.506667, -106.813), 0.0, 0.0, 0, 0, Vector2(0.953333, 201.758), 62.4639, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ux3b4"]
+curve = SubResource("Curve_qpmnd")
+
+[sub_resource type="ParticleProcessMaterial" id="1"]
+emission_shape_scale = Vector3(450, 5, 5)
+emission_shape = 2
+emission_sphere_radius = 1.0
+angle_curve = SubResource("CurveTexture_ux3b4")
+spread = 8.09
+gravity = Vector3(2, 15, 0)
+
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/20/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/30/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/20/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/30/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/20/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/20/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/20/0/kerning_overrides/20/0 = Vector2(0, 0)
+cache/0/20/0/kerning_overrides/30/0 = Vector2(0, 0)
+cache/0/20/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/30/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/30/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/30/0/kerning_overrides/20/0 = Vector2(0, 0)
+cache/0/30/0/kerning_overrides/30/0 = Vector2(0, 0)
+cache/0/30/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/40/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/20/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/30/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/40/0 = Vector2(0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="8"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(5, 20, 0)
+emission_shape_scale = Vector3(1500, 1, 1)
+emission_shape = 2
+emission_sphere_radius = 1.0
+spread = 0.0
+angular_velocity_max = 242.7
+gravity = Vector3(0, 98, 0)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="FontFile" id="3"]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/2/0/ascent = 0.0
+cache/0/2/0/descent = 0.0
+cache/0/2/0/underline_position = 0.0
+cache/0/2/0/underline_thickness = 0.0
+cache/0/2/0/scale = 1.0
+cache/0/2/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/3/0/ascent = 0.0
+cache/0/3/0/descent = 0.0
+cache/0/3/0/underline_position = 0.0
+cache/0/3/0/underline_thickness = 0.0
+cache/0/3/0/scale = 1.0
+cache/0/3/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/1/0/ascent = 0.0
+cache/0/1/0/descent = 0.0
+cache/0/1/0/underline_position = 0.0
+cache/0/1/0/underline_thickness = 0.0
+cache/0/1/0/scale = 1.0
+cache/0/1/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/1/0 = Vector2(0, 0)
+
+[sub_resource type="Theme" id="4"]
+default_font = SubResource("3")
+
+[sub_resource type="Theme" id="5"]
+
+[sub_resource type="Theme" id="7"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2")
+
+[node name="SnowParticles" type="GPUParticles2D" parent="."]
+position = Vector2(342.089, -16.5453)
+amount = 800
+process_material = SubResource("1")
+lifetime = 60.0
+preprocess = 10.0
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Container"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -427.0
+offset_bottom = 49.0
+grow_horizontal = 0
+
+[node name="Made by" type="Label" parent="Container/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("2")
+theme_override_font_sizes/font_size = 40
+text = "Made     by     Daniel Ilsoe     "
+
+[node name="Particles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(339.089, -16.5453)
+rotation = -0.507891
+emitting = false
+process_material = SubResource("8")
+lifetime = 6.0
+preprocess = 6.45
+interp_to_end = 0.314
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme = SubResource("4")
+theme_override_constants/separation = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="f" type="Sprite2D" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+visible = false
+position = Vector2(5.0011, 99.8991)
+texture = ExtResource("3")
+
+[node name="u" type="Sprite2D" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+visible = false
+position = Vector2(59.7458, 98.9553)
+texture = ExtResource("8")
+
+[node name="th" type="Sprite2D" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+visible = false
+position = Vector2(115.869, 98.9553)
+texture = ExtResource("4")
+
+[node name="a" type="Sprite2D" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+visible = false
+position = Vector2(170.87, 97.8328)
+texture = ExtResource("7")
+
+[node name="r" type="Sprite2D" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+visible = false
+position = Vector2(225.87, 98.9552)
+texture = ExtResource("6")
+
+[node name="k" type="Sprite2D" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+visible = false
+position = Vector2(283.116, 98.9553)
+texture = ExtResource("5")
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("5")
+theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_fonts/font = ExtResource("10_dgp4o")
+theme_override_font_sizes/font_size = 90
+text = "Rune scribbler"
+horizontal_alignment = 1
+
+[node name="StartKnap" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.53
+theme = SubResource("7")
+theme_override_fonts/font = ExtResource("1")
+theme_override_font_sizes/font_size = 80
+text = "start
+
+"
+
+[node name="Tutorial" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.81
+theme = SubResource("7")
+theme_override_fonts/font = ExtResource("10_dgp4o")
+theme_override_font_sizes/font_size = 80
+text = "instructions
+ "
+
+[node name="Options" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("7")
+theme_override_fonts/font = ExtResource("1")
+theme_override_font_sizes/font_size = 80
+text = "options
+
+"
+
+[node name="spacing" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("5")
+theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_fonts/font = ExtResource("10_dgp4o")
+theme_override_font_sizes/font_size = 5
+horizontal_alignment = 1
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("7")
+theme_override_fonts/font = ExtResource("10_dgp4o")
+theme_override_font_sizes/font_size = 80
+text = "quit"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartKnap" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

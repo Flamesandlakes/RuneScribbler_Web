@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://hah3n1wcjgdu"]
+
+[ext_resource type="Script" path="res://Worlds/RuneTutorial.gd" id="1_k7m5x"]
+[ext_resource type="Theme" uid="uid://cannmxwkygqyh" path="res://Themes/InputTheme.tres" id="2_jtvf1"]
+[ext_resource type="FontFile" uid="uid://blri2xhdqr6hi" path="res://Fonts/Pseudo futhark font.tres" id="3_k4hr7"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k7m5x")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Instructions" type="Label" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(680, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "
+
+
+You will be shown a rune from the Elder Futhark runic alphabet. You will be given a set of labels. One of these labels will match the rune. The number of labels is scaled based on the difficulty. 
+
+The difficulty can be changed in the options menu.
+
+Finding the correct match will likely involve a lot of trial and error. Especially if you are not already familiar with this runic alphabet.
+
+
+
+
+"
+autowrap_mode = 2
+
+[node name="ItemList" type="ItemList" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_jtvf1")
+theme_override_fonts/font = ExtResource("3_k4hr7")
+text = "  Return to Menu  "
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

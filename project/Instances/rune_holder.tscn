@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1vyenj5dlhpu"]
+
+[ext_resource type="Texture2D" uid="uid://b1ucsd6gvq083" path="res://Fonts/Grey as Elder Futhark/Tile/0_blank.png" id="1_emein"]
+
+[node name="RuneHolder" type="Node2D" groups=["Persist"]]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(5, 4.915)
+texture = ExtResource("1_emein")

@@ -1,0 +1,275 @@
+[gd_scene load_steps=14 format=3 uid="uid://dejdbln72y2u"]
+
+[ext_resource type="Script" path="res://Worlds/RuneQuessing_Scene.gd" id="1_3ithn"]
+[ext_resource type="Theme" uid="uid://cannmxwkygqyh" path="res://Themes/InputTheme.tres" id="2_iat5m"]
+[ext_resource type="FontFile" uid="uid://cprthg0w12pn3" path="res://ComicRunes.otf" id="2_sjns8"]
+[ext_resource type="FontFile" uid="uid://21en5cevipwl" path="res://Fonts/FUTHAI__.TTF" id="3_573i4"]
+[ext_resource type="FontFile" path="res://Fonts/Pseudo futhark font.tres" id="5_64ap5"]
+
+[sub_resource type="Environment" id="Environment_3n04w"]
+background_mode = 3
+background_canvas_max_layer = 5
+ambient_light_color = Color(0.882353, 0.882353, 0.882353, 1)
+glow_enabled = true
+glow_intensity = 1.5
+glow_strength = 1.74
+glow_blend_mode = 1
+glow_hdr_threshold = 1.5
+
+[sub_resource type="GDScript" id="GDScript_2ejoi"]
+script/source = "extends Control
+
+var runeholder = preload(\"res://Instances/rune_holder.tscn\")
+
+var rune_set = {\"blank\":\"0_blank\",
+				\"a\":\"a\", 
+				\"b\":\"b\", 
+				\"k\":\"c, k, q\", 
+				\"d\":\"d\", 
+				\"e\":\"e\", 
+				\"f\":\"f\", 
+				\"g\":\"g\",
+				\"h\":\"h, sort of\",
+				\"i\": \"i\",
+				\"j\": \"j, y, but mirrored\",
+				\"l\": \"l\",
+				\"m\": \"m, sort of\",
+				\"n\": \"n\",
+				\"ng\": \"ng\",
+				\"o\": \"o\",
+				\"r\": \"r\",
+				\"s\": \"s\",
+				\"t\" : \"t\",
+				\"th\": \"th, sort of\",
+				\"u\": \"u\",
+				\"v\": \"v\"}
+
+var current_rune = \"0_blank\"
+var rune_path = \"res://Fonts/Grey as Elder Futhark/Tile/%s.png\"
+# Called when the node enters the scene tree for the first time.
+'''
+func _ready():
+	var curr_rune = initialize_rune()
+	rune_path = rune_path % curr_rune
+	
+	var holder = runeholder#get_node(\"CenterContainer/VSplitContainer/RuneHolder\")
+	add_child(holder)
+	holder.position = get_viewport_rect().size / 2
+	holder.texture = load(rune_path)
+	print(holder.position)
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+
+func initialize_rune(ignore_blank = true):
+	var index = randi() % rune_set.values().size()
+	var rune = rune_set.values()[index]
+	if rune == \"blank\" and ignore_blank == true:
+		initialize_rune(ignore_blank == true)
+	return rune
+'''
+"
+
+[sub_resource type="Curve" id="Curve_bdjnr"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0.04, 257.143), 0.0, 0.0, 0, 0, Vector2(0.506667, -106.813), 0.0, 0.0, 0, 0, Vector2(0.953333, 201.758), 62.4639, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_w3x5y"]
+curve = SubResource("Curve_bdjnr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_alcx0"]
+emission_shape_scale = Vector3(150, -5, 5)
+emission_shape = 2
+emission_sphere_radius = 1.0
+angle_curve = SubResource("CurveTexture_w3x5y")
+spread = 8.09
+gravity = Vector3(2, 15, 0)
+
+[sub_resource type="Theme" id="Theme_5sirx"]
+default_font_size = 24
+
+[sub_resource type="Theme" id="Theme_bj6x4"]
+
+[sub_resource type="Theme" id="Theme_kjhgq"]
+
+[node name="Root2D" type="Node2D"]
+script = ExtResource("1_3ithn")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3n04w")
+
+[node name="Control" type="Control" parent="."]
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 720.0
+offset_bottom = 1280.0
+grow_horizontal = 2
+grow_vertical = 2
+auto_translate = false
+localize_numeral_system = false
+script = SubResource("GDScript_2ejoi")
+
+[node name="SnowParticles" type="GPUParticles2D" parent="Control"]
+position = Vector2(381, 6)
+scale = Vector2(4, 3.932)
+amount = 800
+process_material = SubResource("ParticleProcessMaterial_alcx0")
+lifetime = 60.0
+preprocess = 10.0
+
+[node name="TopInfo" type="CenterContainer" parent="Control" groups=["Persist"]]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="LabelContainer" type="VBoxContainer" parent="Control/TopInfo"]
+layout_mode = 2
+theme = SubResource("Theme_5sirx")
+
+[node name="TotalLabel" type="Label" parent="Control/TopInfo/LabelContainer" groups=["Persist"]]
+layout_mode = 2
+text = "Total: 0"
+
+[node name="StreakLabel" type="Label" parent="Control/TopInfo/LabelContainer" groups=["Persist"]]
+layout_mode = 2
+text = "Streak: 0"
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="VSplitContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+
+[node name="label" type="Label" parent="Control/CenterContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_bj6x4")
+theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_fonts/font = ExtResource("2_sjns8")
+theme_override_font_sizes/font_size = 90
+text = "identify the rune
+
+"
+horizontal_alignment = 1
+
+[node name="spacing2" type="Label" parent="Control/CenterContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_bj6x4")
+theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_fonts/font = ExtResource("2_sjns8")
+theme_override_font_sizes/font_size = 5
+text = "
+
+
+
+
+
+
+
+
+
+"
+horizontal_alignment = 3
+
+[node name="RuneContainer" type="MarginContainer" parent="Control/CenterContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="instructions" type="Label" parent="Control/CenterContainer/VSplitContainer"]
+layout_mode = 2
+theme = SubResource("Theme_kjhgq")
+theme_override_fonts/font = ExtResource("3_573i4")
+text = "
+
+
+
+
+
+
+
+ the first leter of the rune name coresponds to its position in the latin alphabet
+but there are ekseptions"
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="GridContainer" parent="Control/CenterContainer/VSplitContainer"]
+layout_mode = 2
+theme = ExtResource("2_iat5m")
+columns = 3
+
+[node name="Button" type="Button" parent="Control/CenterContainer/VSplitContainer/ButtonContainer"]
+visible = false
+layout_mode = 2
+text = "a"
+
+[node name="Button2" type="Button" parent="Control/CenterContainer/VSplitContainer/ButtonContainer"]
+visible = false
+layout_mode = 2
+text = "b"
+
+[node name="Button3" type="Button" parent="Control/CenterContainer/VSplitContainer/ButtonContainer"]
+visible = false
+layout_mode = 2
+text = "c"
+
+[node name="Button4" type="Button" parent="Control/CenterContainer/VSplitContainer/ButtonContainer"]
+visible = false
+layout_mode = 2
+text = "g"
+
+[node name="cryptic_text" type="Label" parent="Control/CenterContainer/VSplitContainer"]
+layout_mode = 2
+theme = SubResource("Theme_kjhgq")
+theme_override_fonts/font = ExtResource("3_573i4")
+text = "
+tiwaz wodanaz ᚦunaraz and fraujo are four gods in the week as 
+tuesday wednesday thursday and friday
+
+"
+horizontal_alignment = 1
+
+[node name="more_cryptic_text" type="Label" parent="Control/CenterContainer/VSplitContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_573i4")
+text = "however elder fuᚦark predates the age of the vikings and even their gods
+
+"
+horizontal_alignment = 1
+
+[node name="more_cryptic_text2" type="Label" parent="Control/CenterContainer/VSplitContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_573i4")
+text = "younger fuᚦark consist of a smaler set of runes
+runes were combined to represent sounds that did not have their own rune
+
+"
+horizontal_alignment = 1
+
+[node name="MenuButton" type="Button" parent="Control/CenterContainer/VSplitContainer"]
+layout_mode = 2
+theme = ExtResource("2_iat5m")
+theme_override_fonts/font = ExtResource("5_64ap5")
+text = "  Return to Menu  "
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Control/CenterContainer/VSplitContainer/MenuButton" to="." method="_on_Return_pressed"]

@@ -1,0 +1,143 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0we7s00wrqvr"]
+
+[ext_resource type="FontFile" uid="uid://blri2xhdqr6hi" path="res://Fonts/Pseudo futhark font.tres" id="1_8bx0f"]
+[ext_resource type="Script" path="res://Worlds/SettingsMenu.gd" id="1_62a64"]
+[ext_resource type="Theme" uid="uid://cannmxwkygqyh" path="res://Themes/InputTheme.tres" id="3_7qvhp"]
+
+[node name="Control" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_62a64")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 150.0
+offset_right = 250.0
+offset_bottom = 1150.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8bx0f")
+theme_override_font_sizes/font_size = 90
+text = "Options"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "
+
+
+"
+
+[node name="DifficultyInfo" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Difficulty Scale 
+(Choose the number of presented labels)"
+
+[node name="SetButtonsNumber" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = 3.0
+max_value = 12.0
+step = 3.0
+value = 6.0
+rounded = true
+tick_count = 4
+ticks_on_borders = true
+
+[node name="MinAndMaxDiffInfo" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Minimum: 3
+Maximum: 12"
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "
+"
+
+[node name="EffectsInfo" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Visual Effects Scale
+(Choose the amount of visual effects)"
+
+[node name="ScaleEffects" type="HSlider" parent="VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 2
+min_value = 0.5
+max_value = 5.5
+step = 0.5
+value = 3.0
+tick_count = 11
+ticks_on_borders = true
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "
+
+"
+
+[node name="SetLabelFormat" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 35
+text = "Use Proto-Germanic labels"
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "
+
+
+"
+
+[node name="ResetRecords" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+toggle_mode = true
+text = "Reset Personal Score"
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "
+
+
+
+"
+
+[node name="SaveButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+disabled = true
+text = "Save Changes"
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "
+"
+
+[node name="MenuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_7qvhp")
+theme_override_fonts/font = ExtResource("1_8bx0f")
+text = "  Return to Menu  "
+
+[connection signal="drag_ended" from="VBoxContainer/SetButtonsNumber" to="." method="_on_set_buttons_number_drag_ended"]
+[connection signal="drag_ended" from="VBoxContainer/ScaleEffects" to="." method="_on_scale_effects_drag_ended"]
+[connection signal="toggled" from="VBoxContainer/SetLabelFormat" to="." method="_on_set_label_format_toggled"]
+[connection signal="toggled" from="VBoxContainer/ResetRecords" to="." method="_on_reset_records_toggled"]
+[connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuButton" to="." method="_on_Return_pressed"]

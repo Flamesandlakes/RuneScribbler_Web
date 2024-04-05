@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://uovmcqsdydep"]
+
+[ext_resource type="Script" path="res://Instances/GuessLetter.gd" id="1_mljgj"]
+
+[sub_resource type="Theme" id="Theme_iccft"]
+default_font_size = 60
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GuessLetter" type="Button" parent="." groups=["letterinputs"]]
+visibility_layer = 2
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme = SubResource("Theme_iccft")
+text = "   DANCE"
+script = ExtResource("1_mljgj")
+
+[connection signal="pressed" from="GuessLetter" to="GuessLetter" method="_on_pressed"]
