@@ -59,7 +59,7 @@ func load_json(json_path, placeholder):
 			
 			return content
 	else:
-		print("Prior progress not found. Using default instead.")
+		#print("Prior progress not found. Using default instead.")
 		return placeholder
 
 
