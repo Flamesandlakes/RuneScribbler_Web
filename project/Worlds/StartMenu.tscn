@@ -20,7 +20,7 @@ point_count = 3
 curve = SubResource("Curve_qpmnd")
 
 [sub_resource type="ParticleProcessMaterial" id="1"]
-emission_shape_scale = Vector3(450, 5, 5)
+emission_shape_scale = Vector3(1250, 5, 5)
 emission_shape = 2
 emission_sphere_radius = 1.0
 angle_curve = SubResource("CurveTexture_ux3b4")
@@ -255,7 +255,6 @@ theme = SubResource("7")
 theme_override_fonts/font = ExtResource("1")
 theme_override_font_sizes/font_size = 80
 text = "start
-
 "
 
 [node name="Tutorial" type="Button" parent="CenterContainer/VBoxContainer"]
@@ -266,7 +265,7 @@ theme = SubResource("7")
 theme_override_fonts/font = ExtResource("10_dgp4o")
 theme_override_font_sizes/font_size = 80
 text = "instructions
- "
+"
 
 [node name="Options" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -275,7 +274,6 @@ theme = SubResource("7")
 theme_override_fonts/font = ExtResource("1")
 theme_override_font_sizes/font_size = 80
 text = "options
-
 "
 
 [node name="spacing" type="Label" parent="CenterContainer/VBoxContainer"]
@@ -285,6 +283,13 @@ theme = SubResource("5")
 theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
 theme_override_fonts/font = ExtResource("10_dgp4o")
 theme_override_font_sizes/font_size = 5
+text = "
+
+
+
+
+
+"
 horizontal_alignment = 1
 
 [node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
@@ -292,7 +297,7 @@ layout_mode = 2
 theme = SubResource("7")
 theme_override_fonts/font = ExtResource("10_dgp4o")
 theme_override_font_sizes/font_size = 80
-text = "quit"
+text = "  Return to homepage  "
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartKnap" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]

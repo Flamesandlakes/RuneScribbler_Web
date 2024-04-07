@@ -55,6 +55,7 @@ func _on_options_pressed():
 
 
 func _on_Quit_pressed():
+	OS.shell_open("https://flamesandlakes.github.io/")
 	get_tree().quit() # Replace with function body.
 
 
