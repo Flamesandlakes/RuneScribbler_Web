@@ -1,4 +1,4 @@
-<h1> Rune Matching App</h1>
+# Rune Matching App
 This is RuneScribbler, an app designed to test of your rune knowledge. <br>
 In case of minimal prior knowledge to runes, you may treat it as an unforgiving memory puzzle - where the philosophy is learning by doing. <br><br>
 You will be shown an image of an rune and asked to match it. <br> 
